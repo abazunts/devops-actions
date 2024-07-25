@@ -1,0 +1,36 @@
+name: File Change Based Workflow in Monorepo
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'backend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build backend
+        run: |
+          echo "Building backend..."
+          cd backend
+          # Add build commands for backend here
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy backend
+        run: |
+          echo "Deploying backend..."
+          cd backend
+          # Add deployment commands for backend here
+
