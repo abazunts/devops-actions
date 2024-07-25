@@ -3,7 +3,7 @@ name: File Change Based Workflow in Monorepo
 on:
   push:
     branches:
-      - main
+      - develop
     paths:
       - 'service1/**'
       - 'service2/**'
