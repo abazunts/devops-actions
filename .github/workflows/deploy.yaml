@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop2
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Testing
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Deploying to Testing Environment..."
+        # Add deployment commands here
+
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/develop2'
+        run: echo "Deploying to Production Environment..."
+        # Add deployment commands here
